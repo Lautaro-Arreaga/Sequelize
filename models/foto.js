@@ -1,26 +1,21 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class foto extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class Foto extends Model {
     static associate(models) {
-      // define association here
+      // Asociaciones si las necesitas
     }
   }
-  foto.init({
+  Foto.init({
     titulo: DataTypes.STRING,
     descripcion: DataTypes.STRING,
     calificacion: DataTypes.FLOAT,
-    tuta: DataTypes.STRING
+    ruta: DataTypes.STRING  // ya corregido aquí también
   }, {
     sequelize,
-    modelName: 'foto',
+    modelName: 'Foto',
+    tableName: 'fotos',        // 👈 importante: nombre exacto de la tabla
+    freezeTableName: true      // 👈 evita que Sequelize pluralice
   });
-  return foto;
+  return Foto;
 };
