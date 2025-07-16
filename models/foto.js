@@ -3,19 +3,25 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Foto extends Model {
     static associate(models) {
-      // Asociaciones si las necesitas
+      // Asociación con etiquetas (muchos a muchos)
+      this.belongsToMany(models.etiqueta, {
+        through: 'fotoetiquetas',
+        foreignKey: 'foto_id'
+      });
     }
   }
+
   Foto.init({
     titulo: DataTypes.STRING,
-    descripcion: DataTypes.STRING,
+    descripcion: DataTypes.TEXT,
     calificacion: DataTypes.FLOAT,
-    ruta: DataTypes.STRING  // ya corregido aquí también
+    ruta: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Foto',
-    tableName: 'fotos',        // 👈 importante: nombre exacto de la tabla
-    freezeTableName: true      // 👈 evita que Sequelize pluralice
+    tableName: 'fotos',
+    freezeTableName: true
   });
+
   return Foto;
 };

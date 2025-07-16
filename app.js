@@ -4,9 +4,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+<<<<<<< HEAD
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const fotosRouter = require('./routes/fotos');
+=======
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var fotosRouter = require('./routes/fotos');
+>>>>>>> 40566c7 (Completo)
 
 const app = express();
 
@@ -23,7 +29,12 @@ app.use(cookieParser());
 // ✅ Sirve los archivos estáticos directamente desde /public
 app.use(express.static(path.join(__dirname, 'public')));
 
+<<<<<<< HEAD
 // Rutas
+=======
+
+
+>>>>>>> 40566c7 (Completo)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/fotos', fotosRouter);
